@@ -1,12 +1,63 @@
-﻿.cell{
+﻿.cell {
     width: 100px;
     height: 100px;
-    position:absolute;
+    position: absolute;
     transition: 0.75s;
-    background: rgb(21, 214, 7);
+    background: rgb(236, 249, 235);
     border-radius: 50px;
 }
 
-.cell:hover{
-    background: rgb(9, 222, 194);
-}
+    .cell .glycocalyx {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        border-radius: 50px;
+        border: 2px dashed #dca306 ;
+    }
+
+    
+    .cell .membrane {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        border-radius: 50px;
+        border: 2px double #076fd8a6 ;
+    }
+
+    .cell:hover {
+        background: rgba(111, 162, 125, 0.674);
+    }
+
+    .cell .organelles .mitochondrion {
+        width: 35px;
+        height: 14px;
+        background: rgb(43, 118, 38);
+        border-radius: 10px;
+        position: absolute;
+        left: 35px;
+        top: 10px;
+        transform: rotate(45deg);
+    }
+
+    .cell .organelles .lysosome {
+        width: 10px;
+        height: 10px;
+        background: rgb(234, 234, 5);
+        border-radius: 5px;
+        position: absolute;
+        left: 20px;
+        top: 30px;
+    }
+
+
+    
+    .cell .nucleo {
+        position: absolute;
+        width: 40%;
+        height: 40%;
+        border-radius: 50%;
+        border: 3px double #fd0000 ;
+        left: 17px;
+        top: 45px;
+        background: #7c308b;
+    }

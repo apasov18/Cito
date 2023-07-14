@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "Cito": {
+      "commandName": "Project",
+      "hotReloadEnabled": true
+    }
+  }
+}
