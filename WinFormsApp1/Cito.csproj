@@ -13,6 +13,9 @@
   </ItemGroup>
 
   <ItemGroup>
+    <None Update="Interface\flex.html">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Update="Interface\index.html">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>

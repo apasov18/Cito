@@ -1,7 +1,6 @@
 ﻿
 
 window.chrome.webview.addEventListener('message', event => {
-
-    app.SetPosition(event.data)
+    app.LoadCells(event.data);
 
 });

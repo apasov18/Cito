@@ -1,6 +1,9 @@
-﻿using Microsoft.Web.WebView2.WinForms;
+﻿using Cito.Fabrics;
+using Cito.Models;
+using Microsoft.Web.WebView2.WinForms;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Text.Json;
@@ -17,17 +20,20 @@ namespace WinFormsApp1.Controller
             _web = web;
         }
         Random random = new Random();
-        public async void GetPosition()
+        public async void LoadCells()
         {
+            int count = 3;
+           
+            var cells = CellFabric.CreateCells(count);
 
-            var message = new
-            {
-               left = random.Next(0,700) +"px",
-               top = random.Next(0,700) + "px",
 
-            };
-            var json = JsonSerializer.Serialize(message);
+
+            var json = JsonSerializer.Serialize(cells);
             _web.CoreWebView2.PostWebMessageAsJson(json);
         }
+
+
+       
+
     }
 }

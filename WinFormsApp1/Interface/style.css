@@ -1,27 +1,44 @@
-﻿.cell {
+﻿*{
+   
+    
+}
+
+#app {
+    width: 100vw;
+    height: 100vh;
+    background: #25682c5d;
+    background-image: radial-gradient(#ffffff78,#036363);
+    overflow:hidden;
+}
+
+.cell {
     width: 100px;
     height: 100px;
     position: absolute;
     transition: 0.75s;
     background: rgb(236, 249, 235);
-    border-radius: 50px;
+    border-radius: 45%;
+
 }
 
     .cell .glycocalyx {
         position: absolute;
         width: 100%;
         height: 100%;
-        border-radius: 50px;
-        border: 2px dashed #dca306 ;
+        border-radius: 45%;
+        border: 2px dashed #dca306;
     }
 
-    
+
     .cell .membrane {
         position: absolute;
         width: 100%;
         height: 100%;
-        border-radius: 50px;
-        border: 2px double #076fd8a6 ;
+        border-radius: 45%;
+        border: 2px double #076fd8a6;
+        display: flex;
+        justify-content: center;
+        align-items: center;
     }
 
     .cell:hover {
@@ -32,11 +49,13 @@
         width: 35px;
         height: 14px;
         background: rgb(43, 118, 38);
+        border: 2px dotted rgb(35, 4, 37) ;
         border-radius: 10px;
         position: absolute;
         left: 35px;
         top: 10px;
-        transform: rotate(45deg);
+        transform: rotate(18deg);
+
     }
 
     .cell .organelles .lysosome {
@@ -52,12 +71,23 @@
 
     
     .cell .nucleo {
-        position: absolute;
+        position:relative;
         width: 40%;
         height: 40%;
         border-radius: 50%;
-        border: 3px double #fd0000 ;
-        left: 17px;
-        top: 45px;
-        background: #7c308b;
+        border: 3px double #fd00e8 ;
+        background: #823192;
+    }
+
+    .cell .nucleo::after {
+        position: absolute;
+        content: "";
+        width: 40%;
+        height: 40%;
+        border: 3px solid #8508b6f4 ;
+        border-radius: 50%;
+        left: 40%;
+        top: 40%;
+        background: #6a2677;
+        
     }
