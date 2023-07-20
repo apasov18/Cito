@@ -7,13 +7,13 @@ using System.Threading.Tasks;
 
 namespace Cito.Fabrics
 {
-    internal class CellFabric
+    internal class CellFabric :_FabricContainer 
     {
         static Random random = new Random();
         public static CellModel CreateCell()
         {
             int size = random.Next(100, 300);
-            return new CellModel()
+            var cell =  new CellModel()
             {
 
                 Life = 100,
@@ -25,8 +25,18 @@ namespace Cito.Fabrics
                     Y = random.Next(0, 600) + "px",
                 },
                 Mitochondrion = MitochondrionFabric.CreateMitochondrions(random.Next(1, 5)),
-                Lysosome = LysosomeFabric.CreateLysosomes(random.Next(1, 5)),
+                Lysosomes = LysosomeFabric.CreateLysosomes(random.Next(1, 5)),
             };
+            Type key = typeof(CellModel);
+            if (Container.ContainsKey(key))
+            {
+                var appendConfiguration = Container[key];
+                appendConfiguration(cell);
+            }
+
+
+
+            return cell;
         }
 
         public static CellModel[] CreateCells(int count = 3)

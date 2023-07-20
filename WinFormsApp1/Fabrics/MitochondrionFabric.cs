@@ -7,13 +7,13 @@ using System.Threading.Tasks;
 
 namespace Cito.Fabrics
 {
-    internal class MitochondrionFabric
+    internal class MitochondrionFabric : _FabricContainer
     {
         static Random random = new Random();
         public static MitochondrionModel CreateMitochondrion()
         {
             int size = random.Next(100, 300);
-            return new MitochondrionModel()
+            var mito = new MitochondrionModel()
             {
                 Style = new StyleModel()
                 {
@@ -22,6 +22,13 @@ namespace Cito.Fabrics
                     Transform = $"rotate({random.Next(0, 360)}deg)"
                 }
             };
+            Type key = typeof(MitochondrionModel);
+            if (Container.ContainsKey(key))
+            {
+                var appendConfiguration = Container[key];
+                appendConfiguration(mito);
+            }
+            return mito;
         }
         public static List< MitochondrionModel>  CreateMitochondrions( int count = 3)
         {

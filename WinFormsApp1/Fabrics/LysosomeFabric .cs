@@ -7,13 +7,13 @@ using System.Threading.Tasks;
 
 namespace Cito.Fabrics
 {
-    internal class LysosomeFabric
+    internal class LysosomeFabric : _FabricContainer
     {
         static Random random = new Random();
         public static LysosomeModel CreateLysosome()
         {
             int size = random.Next(100, 300);
-            return new LysosomeModel()
+            var lyso = new LysosomeModel()
             {
 
                 Style = new StyleModel()
@@ -22,6 +22,13 @@ namespace Cito.Fabrics
                     Y = random.Next(20, size - 20) + "px",
                 }
             };
+            Type key = typeof(LysosomeModel);
+            if (Container.ContainsKey(key))
+            {
+                var appendConfiguration = Container[key];
+                appendConfiguration(lyso);
+            }
+            return lyso;
         }
 
         public static List<LysosomeModel> CreateLysosomes(int count = 3)

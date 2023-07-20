@@ -1,5 +1,6 @@
 ﻿using Cito.Fabrics;
 using Cito.Models;
+using Cito.WinFormsApp1;
 using Microsoft.Web.WebView2.WinForms;
 using System;
 using System.Collections.Generic;
@@ -22,12 +23,12 @@ namespace WinFormsApp1.Controller
         Random random = new Random();
         public async void LoadCells()
         {
+          
+
+
             int count = 3;
            
             var cells = CellFabric.CreateCells(count);
-
-
-
             var json = JsonSerializer.Serialize(cells);
             _web.CoreWebView2.PostWebMessageAsJson(json);
         }

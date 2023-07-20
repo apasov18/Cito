@@ -20,8 +20,8 @@ namespace Cito.Models
         [JsonPropertyName("mitochondrions")]
         public List<MitochondrionModel> Mitochondrion { get; set; }
 
-        [JsonPropertyName("lysosome")]
-        public List<LysosomeModel> Lysosome { get; set; }
+        [JsonPropertyName("lysosomes")]
+        public List<LysosomeModel> Lysosomes { get; set; }
 
 
     }
