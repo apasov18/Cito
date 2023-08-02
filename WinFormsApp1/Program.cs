@@ -1,6 +1,7 @@
 
 using Cito.Models;
 using Cito.WinFormsApp1;
+using System.Security.Cryptography.Pkcs;
 
 namespace WinFormsApp1
 {
@@ -10,7 +11,17 @@ namespace WinFormsApp1
         [STAThread]
         static void Main()
         {
+            Random random = new Random ();
             Configuration config = new Configuration();
+            config.Configure<CellModel>(cell =>
+            {
+                cell.Id = Guid.NewGuid();
+                cell.Style.Width = "100px";
+                cell.Style.Height = "100px";
+                cell.Energy = random.Next(20, 300);
+
+            });
+            
 
 
             ApplicationConfiguration.Initialize();

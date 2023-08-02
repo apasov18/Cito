@@ -7,8 +7,19 @@ using System.Threading.Tasks;
 
 namespace Cito.Models
 {
-    internal class CellModel
+    public class CellModel
     {
+
+        [JsonPropertyName("id")]
+        public Guid  Id { get; set; }
+
+
+        [JsonPropertyName("energy")]
+        public double Energy { get; set; }
+
+        [JsonPropertyName("dna")]
+        public string DNA { get; set; }
+
         [JsonPropertyName("life")]
         public double Life{ get; set; }
 

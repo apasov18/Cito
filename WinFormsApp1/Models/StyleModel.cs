@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Cito.Models
 {
-    internal class StyleModel
+    public class StyleModel
     {
         [JsonPropertyName("width")]
         public string Width { get; set; }

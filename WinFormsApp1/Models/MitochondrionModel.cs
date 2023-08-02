@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Cito.Models
 {
-    internal class MitochondrionModel
+    public class MitochondrionModel
     {
 
         [JsonPropertyName("style")]

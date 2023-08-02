@@ -15,7 +15,7 @@ var app = new Vue({
     methods: {
         ShowCellInfo() {
 
-              this.form.show();
+            this.form.show();
         },
         HideCellInfo() {
             this.form.hide();
@@ -23,9 +23,17 @@ var app = new Vue({
         },
         LoadCells(cells) {
             this.cells = cells;
+            setInterval(() => {
+                let json = JSON.stringify(this.cells)
+                api.UpdateCells(json);
+            }, 500)
+        },
+        UpdateCells(newCells) {
+            this.cells = newCells;
+
         }
-        
-      
+
+
 
     }
 })

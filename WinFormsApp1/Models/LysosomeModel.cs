@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Cito.Models
 {
-    internal class LysosomeModel
+    public class LysosomeModel
     {
 
         [JsonPropertyName("style")]
