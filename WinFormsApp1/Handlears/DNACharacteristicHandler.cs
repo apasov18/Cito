@@ -9,29 +9,29 @@ using System.Threading.Tasks;
 
 namespace Cito.Handlears
 {
-    internal class DNASecondHandler : Handler
+    internal class DNACharacteristicHandler : Handler
     {
 
         public override void LifeRequest(RequestModel request)
         {
             if (request.Cell.DNA[4]=='T')
             {
-                request.Cell.Energy += 25;
+                request.Cell.Life += 3;
                 
             }
             else if (request.Cell.DNA[4] == 'A')
             {
-                request.Cell.Energy += 5;
+                request.Cell.Life += 8;
 
             }
             else if (request.Cell.DNA[4] == 'G')
             {
-                request.Cell.Energy += 8;
+                request.Cell.Life += 8;
 
             }
             else if (request.Cell.DNA[4] == 'C')
             {
-                request.Cell.Energy += 2;
+                request.Cell.Life += 10;
 
             }
 

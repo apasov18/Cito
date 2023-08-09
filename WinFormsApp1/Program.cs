@@ -1,4 +1,5 @@
 
+using Cito.Extantions;
 using Cito.Models;
 using Cito.WinFormsApp1;
 using System.Security.Cryptography.Pkcs;
@@ -19,6 +20,8 @@ namespace WinFormsApp1
                 cell.Style.Width = "100px";
                 cell.Style.Height = "100px";
                 cell.Energy = random.Next(20, 300);
+                cell.Life = random.Next(20, 150);
+                cell.DNA = HandlerExtensions.GenerateDNA(random.Next(10, 30));
 
             });
             

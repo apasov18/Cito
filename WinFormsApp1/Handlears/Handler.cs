@@ -18,14 +18,12 @@ namespace Cito.Handlears
 
         }
 
-        public virtual StyleModel LifeRequest(CellModel cell)
+        public virtual void  LifeRequest(RequestModel request)
         {
             if (nextHandler != null)
             {
-                return nextHandler.LifeRequest(cell);
+                 nextHandler.LifeRequest(request);
             }
-            return null;
-            //throw new Exception("NOT FOUND DNA");
         }
     }
 }

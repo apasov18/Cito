@@ -22,10 +22,14 @@ namespace WinFormsApp1.Controller
         {
             DNAFirstHandler first = new DNAFirstHandler();
             DNASecondHandler second = new DNASecondHandler();
+            var characteristics = new DNACharacteristicHandler();
+
             DNAThirdHandler third = new DNAThirdHandler();
 
             first.SetNextHandler(second);
-            second.SetNextHandler(third);
+            second.SetNextHandler(characteristics);
+            characteristics.SetNextHandler(third);
+
             _cellHandler = first;
 
         }
@@ -35,7 +39,7 @@ namespace WinFormsApp1.Controller
 
 
 
-            int count = 3;
+            int count = 10;
 
             var cells = CellFabric.CreateCells(count);
 
@@ -49,19 +53,16 @@ namespace WinFormsApp1.Controller
 
             cells.ForEach(cell =>
             {
-                StyleModel style = _cellHandler.LifeRequest(cell);
-                if (style != null)
+                var request = new RequestModel()
                 {
-                    cell.Style = style;
-                }
-                //else
-                //{
-                //    cells.Remove(cell);
-                //}
+                    Cell = cell,
+                    Cells = cells.Where(c => c.Id != cell.Id).ToList()
+                };
+                 _cellHandler.LifeRequest(request);
+              
             });
 
 
-            //cells.Add(CellFabric.CreateCell());
 
             Json(cells, "UpdateCells");
 

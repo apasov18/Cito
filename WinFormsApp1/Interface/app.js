@@ -5,7 +5,8 @@ var app = new Vue({
     data: {
 
         cells: [],
-        form: null
+        form: null,
+        current: null
 
     },
     mounted() {
@@ -13,8 +14,8 @@ var app = new Vue({
         api.LoadCells();
     },
     methods: {
-        ShowCellInfo() {
-
+        ShowCellInfo(cell) {
+            this.current = cell;
             this.form.show();
         },
         HideCellInfo() {

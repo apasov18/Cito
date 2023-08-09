@@ -1,4 +1,5 @@
-﻿using Cito.Models;
+﻿using Cito.Extantions;
+using Cito.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,22 +11,34 @@ namespace Cito.Handlears
 {
     internal class DNAThirdHandler : Handler
     {
-        static Random random = new Random();
-        Regex regex = new Regex("([0-9]+)px");
+      static Random random = new Random();
 
-        public override StyleModel LifeRequest(CellModel cell)
+        public override void LifeRequest(RequestModel request)
         {
-            if (cell.Energy > 50)
+            if (request.Cell.Life < request.Cell.DNA[5])
             {
-                string px = cell.Style.Y;
-                var colection = regex.Match(px);
-                double newPos = double.Parse(colection.Groups[1].Value);
-                newPos += 10;
-                cell.Style.Y = $"{newPos}px";
-                cell.Energy -= 10;
-                return cell.Style;
+                var cell = request.Cell;
+                var closest = cell.ClosetCell(request.Cells);
+                cell.MoveAwait(closest, random.Next(10,50));
+                request.Cell.Energy -= 8;
             }
-            return base.LifeRequest(cell);
+            else if (request.Cell.Energy > request.Cell.DNA[6])
+            {
+                var cell = request.Cell;
+                var closest = cell.ClosetCell(request.Cells);
+                cell.MoveClose(closest, random.Next(10, 50));
+                request.Cell.Energy -= 10;
+
+            }
+            else 
+            {
+                var cell = request.Cell;
+                var closest = cell.ClosetCell(request.Cells);
+                cell.MoveClose(new Point (1000,500), random.Next(10, 50));
+                request.Cell.Energy -= 2;
+
+            }
+            base.LifeRequest(request);  
         }
     }
 }

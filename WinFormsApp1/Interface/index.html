@@ -29,7 +29,10 @@
                         <button type="button" class="btn-close" aria-label="Close" v-on:click="HideCellInfo"></button>
                     </div>
                     <div class="modal-body">
-                        ...
+                        <div class="row" v-if ="current != null">
+                            {{current.dna}}
+
+                        </div>
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" v-on:click="HideCellInfo">Close</button>
@@ -42,7 +45,7 @@
         <div class="cell"
              v-for="cell in cells"
              v-bind:style="cell.style "
-             v-on:click="ShowCellInfo">
+             v-on:click="ShowCellInfo(cell)">
             <div class="glycocalyx">
                 <div class="membrane">
                     <div class="organelles">

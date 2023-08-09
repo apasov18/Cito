@@ -12,7 +12,7 @@ namespace Cito.Fabrics
         static Random random = new Random();
         public static LysosomeModel CreateLysosome()
         {
-            int size = random.Next(100, 170);
+            int size = 80;
             var lyso = new LysosomeModel()
             {
 

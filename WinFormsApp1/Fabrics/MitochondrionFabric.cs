@@ -12,7 +12,7 @@ namespace Cito.Fabrics
         static Random random = new Random();
         public static MitochondrionModel CreateMitochondrion()
         {
-            int size = random.Next(100, 170);
+            int size = 80;
             var mito = new MitochondrionModel()
             {
                 Style = new StyleModel()

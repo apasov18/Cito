@@ -1,6 +1,8 @@
-﻿using Cito.Models;
+﻿using Cito.Extantions;
+using Cito.Models;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
@@ -10,22 +12,21 @@ namespace Cito.Handlears
 {
     internal class DNAFirstHandler : Handler
     {
-        static Random random = new Random();
-        Regex regex = new Regex("([0-9]+)px");
 
-        public override StyleModel LifeRequest(CellModel cell)
+        public override void LifeRequest(RequestModel request)
         {
-            if (cell.DNA[2] == 'T')
+            if (request.Cell.Energy > request.Cell.DNA[0])
             {
-                string px = cell.Style.X;
-                var colection = regex.Match(px);
-                double newPos = double.Parse(colection.Groups[1].Value);
-                newPos += 10;
-                cell.Style.X = $"{newPos}px";
-                cell.Energy -= 10;
-                return cell.Style;
+                var style = request.Cell.Style;
+                var w = style.Width.GetSize();
+                var h = style.Height.GetSize();
+                style.Width = $"{w + 2}px";
+                style.Height = $"{w + 2}px";
+
+
+
             }
-            return base.LifeRequest(cell);
+            base.LifeRequest(request);
         }
     }
 }
