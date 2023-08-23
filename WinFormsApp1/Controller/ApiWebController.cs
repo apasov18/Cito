@@ -17,6 +17,8 @@ namespace WinFormsApp1.Controller
 {
     public class ApiWebController : BaseController
     {
+        bool life = true;
+
         Handler _cellHandler;
         public ApiWebController(WebView2 web) : base(web)
         {
@@ -47,22 +49,45 @@ namespace WinFormsApp1.Controller
 
         }
 
+        public void CallBackSpeech(string text ) 
+        {
+            List < string> words = text.ToLower().Split(new char[] {' ','.'}).ToList();
+            int index = words.IndexOf("стоп");
+            if(index!= -1)
+            {
+                life = !life;
+            }
+
+            int index2 = words.IndexOf("стартуем");
+
+              if (index2!= -1)
+            {
+                life = true;
+            }
+
+
+
+        }
+
         public async void UpdateCells(string json)
         {
             List<CellModel> cells = JsonSerializer.Deserialize<List<CellModel>>(json)!;
 
-            cells.ForEach(cell =>
+            if (life)
+
             {
-                var request = new RequestModel()
+                cells.ForEach(cell =>
                 {
-                    Cell = cell,
-                    Cells = cells.Where(c => c.Id != cell.Id).ToList()
-                };
-                 _cellHandler.LifeRequest(request);
-              
-            });
+                    var request = new RequestModel()
+                    {
+                        Cell = cell,
+                        Cells = cells.Where(c => c.Id != cell.Id).ToList()
+                    };
+                    _cellHandler.LifeRequest(request);
 
+                });
 
+            }
 
             Json(cells, "UpdateCells");
 

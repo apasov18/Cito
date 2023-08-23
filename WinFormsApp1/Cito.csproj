@@ -19,10 +19,6 @@
     <None Update="Interface\index.html">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Update="Interface\controller.js">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-      <SubType>Code</SubType>
-    </None>
     <None Update="Interface\app.js">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
